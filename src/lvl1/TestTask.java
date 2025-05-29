@@ -14,8 +14,13 @@ public class TestTask {
 
     public static int calc(String input) throws Exception {
         String[] j = input.split(" ");
-        if (j.length < 3) throw new Exception("т.к. строка не является математической операцией");
-        if (j.length > 3) throw new Exception("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+        if (j.length < 3) {
+            throw new Exception("т.к. строка не является математической операцией");
+        }
+        if (j.length > 3 || j[1].length() != 1) {
+
+            throw new Exception("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+        }
         int number1 = Integer.parseInt(j[0]);
         char symbol = j[1].charAt(0);
         if (symbol != '+' && symbol != '-' && symbol != '*' && symbol != '/')
@@ -29,7 +34,7 @@ public class TestTask {
                 case '/' -> number1 / number2;
                 default -> 0;
             };
-        }else throw new Exception("неподходящие числа, введите числа от 1 до 10");
+        } else throw new Exception("неподходящие числа, введите числа от 1 до 10");
 
-        }
     }
+}
