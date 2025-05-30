@@ -12,7 +12,7 @@ public class TestTask {
 
     }
 
-    public static int calc(String input) throws Exception {
+    public static String calc(String input) throws Exception {
         String[] j = input.split(" ");
         if (j.length < 3) {
             throw new Exception("т.к. строка не является математической операцией");
@@ -27,13 +27,14 @@ public class TestTask {
             throw new Exception("неизвестный символ, введите '+,-,*,/'");
         int number2 = Integer.parseInt(j[2]);
         if ((number1 >= 1 && number1 <= 10 && number2 >= 1 && number2 <= 10)) {
-            return switch (symbol) {
+            int result = switch (symbol) {
                 case '+' -> number1 + number2;
                 case '*' -> number1 * number2;
                 case '-' -> number1 - number2;
                 case '/' -> number1 / number2;
                 default -> 0;
             };
+            return Integer.toString(result);
         } else throw new Exception("неподходящие числа, введите числа от 1 до 10");
 
     }
